@@ -6,24 +6,20 @@ import { navigateToPOIView, feedFetchPending } from '../actions';
 class NewsFeed extends Component {
 
   componentWillMount() {
-    this.props.feedFetchPending('https://api.morph.io/meandu229/CommitStrip/data.json?key=UUnt5d5dME%2BWtf2nnKyS&query=select%20*%20from%20%27data%27%20limit%2010000');
+    this.props.feedFetchPending('https://api.morph.io/meandu229/CommitStrip/data.json?key=UUnt5d5dME%2BWtf2nnKyS&query=select%20*%20from%20%27data%27%20limit%201000');
     this.createDataSource(this.props);
   }
 
-  // life cycle callback when the component is about to render another set of props
   componentWillReceiveProps(nextProps) {
-    // nextProps are the next set of props that this component will be rendered with
-    // this.props is still the old set of props
     this.createDataSource(nextProps);
   }
 
   renderRow(news) {
-    console.log(news.url);
     return (
       <View>
         <Text>{ news.text }</Text>
         <Image
-          style={{ width: 200, height: 200 }}
+          style={ styles.imageStyle }
           source={{ uri: news.url }}
           />
       </View>
@@ -57,7 +53,13 @@ class NewsFeed extends Component {
 const styles = {
   containerStyle: {
     flex: 1,
-    backgroundColor: '#abc'
+    backgroundColor: '#ddd'
+  },
+  imageStyle: {
+    flex: 1,
+    height: 250,
+    justifyContent: 'flex-end',
+    resizeMode: 'cover'
   }
 }
 
