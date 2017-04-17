@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import { Text, TouchableWithoutFeedback, View, Image } from 'react-native';
 import { CardSection, Card } from './common';
 
-const ListItem = ({ onPress, title, urlImage }) => {
+class ListItem extends Component {
 
+
+  render() {
+    const { onPress, title, urlImage } = this.props;
     return (
       <TouchableWithoutFeedback onPress={ onPress }>
         <Card>
@@ -12,6 +15,8 @@ const ListItem = ({ onPress, title, urlImage }) => {
           </CardSection>
           <CardSection>
             <Image
+              onError={ () => {console.log('error loading img ' + urlImage) } }
+              onLoad={ () => { console.log('success loading img ' + urlImage) } }
               style={ styles.imageStyle }
               source={{ uri: urlImage }}
               />
@@ -19,7 +24,7 @@ const ListItem = ({ onPress, title, urlImage }) => {
         </Card>
       </TouchableWithoutFeedback>
     )
-
+  }
 }
 
 const styles = {

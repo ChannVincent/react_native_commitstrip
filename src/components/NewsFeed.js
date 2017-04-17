@@ -3,6 +3,7 @@ import { ListView, View, Text, TouchableOpacity, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { navigateToPOIView, feedFetchPending } from '../actions';
 import CellItem from './CellItem';
+import { Spinner } from './common';
 
 class NewsFeed extends Component {
 
@@ -31,6 +32,28 @@ class NewsFeed extends Component {
     this.props.navigateToPOIView({ title: 'title sent from list' });
   }
 
+  renderListView() {
+    if (this.props.pending) {
+      return (
+        <Spinner />
+      )
+    }
+    else if (this.props.newsList.length > 0) {
+      return (
+        <ListView
+          enableEmptySections
+          dataSource={ this.dataSource }
+          renderRow={ this.renderRow }
+          />
+      )
+    }
+    else {
+      return (
+        <Text>Vérifiez votre connexion internet</Text>
+      )
+    }
+  }
+
   createDataSource({ newsList }) {
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 != r2
@@ -41,11 +64,7 @@ class NewsFeed extends Component {
   render() {
     return (
       <View style={ styles.containerStyle }>
-        <ListView
-          enableEmptySections
-          dataSource={ this.dataSource }
-          renderRow={ this.renderRow }
-          />
+        { this.renderListView() }
       </View>
     )
   }
