@@ -16,13 +16,13 @@ class ProfileView extends Component {
 const styles = {
   containerStyle: {
     flex:1,
-    backgroundColor: '#789'
+    backgroundColor: '#ccc'
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    title: 'ProfileView'
+    title: 'In construction'
   }
 }
 

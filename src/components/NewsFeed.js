@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { ListView, View, Text, TouchableOpacity, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { navigateToPOIView, feedFetchPending } from '../actions';
+import CellItem from './CellItem';
 
 class NewsFeed extends Component {
 
@@ -17,10 +18,10 @@ class NewsFeed extends Component {
   renderRow(news) {
     return (
       <View>
-        <Text>{ news.text }</Text>
-        <Image
-          style={ styles.imageStyle }
-          source={{ uri: news.url }}
+        <CellItem
+          title={ news.text }
+          urlImage={ news.url }
+          onPress={ () => { console.log('click') } }
           />
       </View>
     );

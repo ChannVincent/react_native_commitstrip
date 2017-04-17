@@ -16,13 +16,13 @@ class LoveFeed extends Component {
 const styles = {
   containerStyle: {
     flex: 1,
-    backgroundColor: '#def'
+    backgroundColor: '#ccc'
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
     return {
-      title: 'LoveFeed'
+      title: 'In construction'
     }
 }
 
