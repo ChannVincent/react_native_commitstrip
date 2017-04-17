@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
-import { navigateToPOIView } from '../actions';
+import { navigateToPOIView, feedFetchPending } from '../actions';
 
 class NewsFeed extends Component {
+
+  componentWillMount() {
+    this.props.feedFetchPending('https://api.morph.io/meandu229/CommitStrip/data.json?key=UUnt5d5dME%2BWtf2nnKyS&query=select%20*%20from%20%27data%27%20limit%2010000');
+  }
+
   onRowPress() {
     this.props.navigateToPOIView({ title: 'title sent from list' });
   }
@@ -27,9 +32,12 @@ const styles = {
 }
 
 const mapStateToProps = (state, ownProps) => {
+  const { pending, newsList } = state.feed;
+  console.log(newsList);
   return {
-    title: 'NewsFeed'
+    pending,
+    newsList
   }
 }
 
-export default connect(mapStateToProps, { navigateToPOIView })(NewsFeed);
+export default connect(mapStateToProps, { navigateToPOIView, feedFetchPending })(NewsFeed);

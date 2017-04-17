@@ -10,7 +10,6 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, title: action.payload.title };
 
     default:
-      console.log("default");
       return state;
   }
 }
