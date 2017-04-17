@@ -21,7 +21,7 @@ export default (state = INITIAL_STATE, action) => {
 
     case FEED_FETCH_SUCCESS:
       console.log(FEED_FETCH_SUCCESS);
-      return { ...state, pending: false, newsList: action.payload };
+      return { ...state, pending: false, newsList: action.payload.data };
 
     default:
       return state;
