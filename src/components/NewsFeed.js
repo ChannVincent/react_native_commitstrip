@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ListView, View, Text, TouchableOpacity, Image } from 'react-native';
+import { ListView, View, Text, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { navigateToPOIView, feedFetchPending } from '../actions';
 import CellItem from './CellItem';

@@ -13,7 +13,7 @@ class ListItem extends Component {
     switch (this.state.imageLoaded) {
       case 'pending':
         return (
-          <Spinner style={ styles.imageStyle } />
+          <Spinner style={ styles.imageContainerStyle } />
         );
 
       case 'error':
@@ -59,7 +59,7 @@ class ListItem extends Component {
             <Text style={ styles.titleStyle }>{ title }</Text>
           </CardSection>
           <CardSection>
-            <View style={ styles.imageStyle }>
+            <View style={ styles.imageContainerStyle }>
               { this.renderLoader() }
               { this.renderImage(urlImage) }
             </View>
@@ -78,6 +78,11 @@ const styles = {
     paddingBottom: 10
   },
   imageStyle: {
+    flex: 1,
+    height: 250,
+    resizeMode: 'contain'
+  },
+  imageContainerStyle: {
     flex: 1,
     height: 250
   }
