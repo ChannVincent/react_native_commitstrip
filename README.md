@@ -3,11 +3,13 @@
 ## Resume
 
 Simple application to browse CommitStrip albums on Android and iOS.
-3 tabs : 
+3 tabs :
 - 1st tab : latest commitstrip list : you can like them, post some comments, see them in full screen
 - POI view : you can share them
 - 2nd tab : all the commitstrip you like
 - 3rd tab : your profile : you must subscribe, then login to see your profile
+
+[showcase](showcase.png)
 
 ## Tools
 
