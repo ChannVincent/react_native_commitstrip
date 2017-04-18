@@ -26,7 +26,6 @@ const styles = {
     margin: 10
   },
   buttonStyle: {
-    flex: 1,
     alignSelf: 'stretch',
     backgroundColor: '#fff',
     borderRadius: 5,

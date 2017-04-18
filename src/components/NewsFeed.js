@@ -3,7 +3,7 @@ import { ListView, View, Text, TouchableOpacity, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { navigateToPOIView, feedFetchPending } from '../actions';
 import CellItem from './CellItem';
-import { Spinner } from './common';
+import { Spinner, Button, Card } from './common';
 
 class NewsFeed extends Component {
 
@@ -49,7 +49,12 @@ class NewsFeed extends Component {
     }
     else {
       return (
-        <Text>Vérifiez votre connexion internet</Text>
+        <Card>
+        <Button onPress={ () => { this.props.feedFetchPending('https://api.morph.io/meandu229/CommitStrip/data.json?key=UUnt5d5dME%2BWtf2nnKyS&query=select%20*%20from%20%27data%27%20limit%201000') } }>
+          Reload
+        </Button>
+
+        </Card>
       )
     }
   }

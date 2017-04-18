@@ -1,9 +1,54 @@
 import React, { Component } from 'react';
 import { Text, TouchableWithoutFeedback, View, Image } from 'react-native';
-import { CardSection, Card } from './common';
+import { CardSection, Card, Spinner, Button } from './common';
 
 class ListItem extends Component {
 
+  state = {
+    imageLoaded: 'pending'
+  }
+
+  renderLoader() {
+    console.log(this.state.imageLoaded);
+    switch (this.state.imageLoaded) {
+      case 'pending':
+        return (
+          <Spinner style={ styles.imageStyle } />
+        );
+
+      case 'error':
+        return (
+          <Button onPress={ () => { this.setState({ imageLoaded: 'pending' }) } }>
+            Reload
+          </Button>
+        );
+
+      case 'success':
+        return (
+          null
+        );
+
+      default:
+        return null;
+    }
+  }
+
+  renderImage(urlImage) {
+      switch (this.state.imageLoaded) {
+        case 'error':
+          return null;
+
+        default:
+          return (
+            <Image
+              onError={ () => { this.setState({ imageLoaded: 'error' }) } }
+              onLoad={ () => { this.setState({ imageLoaded: 'success' }) } }
+              style={ styles.imageStyle }
+              source={{ uri: urlImage, cache: 'force-cache' }}
+              />
+          );
+      }
+  }
 
   render() {
     const { onPress, title, urlImage } = this.props;
@@ -14,12 +59,10 @@ class ListItem extends Component {
             <Text style={ styles.titleStyle }>{ title }</Text>
           </CardSection>
           <CardSection>
-            <Image
-              onError={ () => {console.log('error loading img ' + urlImage) } }
-              onLoad={ () => { console.log('success loading img ' + urlImage) } }
-              style={ styles.imageStyle }
-              source={{ uri: urlImage }}
-              />
+            <View style={ styles.imageStyle }>
+              { this.renderLoader() }
+              { this.renderImage(urlImage) }
+            </View>
           </CardSection>
         </Card>
       </TouchableWithoutFeedback>
@@ -36,9 +79,7 @@ const styles = {
   },
   imageStyle: {
     flex: 1,
-    height: 250,
-    justifyContent: 'flex-end',
-    resizeMode: 'cover'
+    height: 250
   }
 }
 
