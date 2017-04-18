@@ -1,20 +1,18 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import {  } from '../actions';
-import FitImage from 'react-native-fit-image';
+import Image from 'react-native-transformable-image';
 
 class DetailView extends Component {
   render() {
     return (
       <View style={ styles.containerStyle }>
           <Text>{ this.props.title }</Text>
-            <FitImage
-              indicator
-              indicatorColor="black"
-              indicatorSize="large"
-              source={{ uri: 'http://www.commitstrip.com/wp-content/uploads/2016/03/Strip-Reflexion-de-codeur-4-650-finalenglish.jpg' }}
-          />
+          <Image
+            style={ styles.imageStyle }
+            source={{ uri: urlImage, cache: 'force-cache' }}
+            />
       </View>
     )
   }
@@ -24,6 +22,11 @@ const styles = {
   containerStyle: {
     flex: 1,
     backgroundColor: '#aab'
+  },
+  imageStyle: {
+    flex: 1,
+    width: 300,
+    resizeMode: 'contain'
   }
 }
 

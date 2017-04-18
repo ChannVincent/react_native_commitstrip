@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, TouchableWithoutFeedback, View, Image } from 'react-native';
+import { Text, TouchableOpacity, View, Image } from 'react-native';
 import { CardSection, Card, Spinner, Button } from './common';
 
 class ListItem extends Component {
@@ -53,7 +53,7 @@ class ListItem extends Component {
   render() {
     const { onPress, title, urlImage } = this.props;
     return (
-      <TouchableWithoutFeedback onPress={ onPress }>
+      <TouchableOpacity onPress={ onPress }>
         <Card>
           <CardSection>
             <Text style={ styles.titleStyle }>{ title }</Text>
@@ -65,7 +65,7 @@ class ListItem extends Component {
             </View>
           </CardSection>
         </Card>
-      </TouchableWithoutFeedback>
+      </TouchableOpacity>
     )
   }
 }
