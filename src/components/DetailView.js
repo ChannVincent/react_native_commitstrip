@@ -2,22 +2,69 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import {  } from '../actions';
+import { CardSection, Card, Spinner, Button } from './common';
 import Image from 'react-native-transformable-image';
 import { Actions } from 'react-native-router-flux';
 
 class DetailView extends Component {
+
+  state = {
+    imageLoaded: 'pending'
+  }
+
+  renderLoader() {
+    console.log(this.state.imageLoaded);
+    switch (this.state.imageLoaded) {
+      case 'pending':
+        return (
+          <Spinner style={ styles.imageContainerStyle } />
+        );
+
+      case 'error':
+        return (
+          <Button onPress={ () => { this.setState({ imageLoaded: 'pending' }) } }>
+            Reload
+          </Button>
+        );
+
+      case 'success':
+        return (
+          null
+        );
+
+      default:
+        return null;
+    }
+  }
+
+  renderImage(urlImage) {
+      switch (this.state.imageLoaded) {
+        case 'error':
+          return null;
+
+        default:
+          return (
+            <Image
+              onError={ () => { this.setState({ imageLoaded: 'error' }) } }
+              onLoad={ () => { this.setState({ imageLoaded: 'success' }) } }
+              style={ styles.imageStyle }
+              pixels={ styles.imageStyle }
+              source={{ uri: urlImage, cache: 'force-cache' }}
+              />
+          );
+      }
+  }
 
   componentWillMount() {
     Actions.refresh({title: this.props.title })
   }
 
   render() {
+    const { imageStyle, urlImage } = this.props;
     return (
       <View style={ styles.containerStyle }>
-        <Image
-          style={ styles.imageStyle }
-          source={{ uri: this.props.urlImage }}
-          />
+        { this.renderLoader() }
+        { this.renderImage(urlImage) }
       </View>
     )
   }
