@@ -3,12 +3,17 @@ import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import {  } from '../actions';
 import Image from 'react-native-transformable-image';
+import { Actions } from 'react-native-router-flux';
 
 class DetailView extends Component {
+
+  componentWillMount() {
+    Actions.refresh({title: this.props.title })
+  }
+
   render() {
     return (
       <View style={ styles.containerStyle }>
-        <Text>{ this.props.title }</Text>
         <Image
           style={ styles.imageStyle }
           source={{ uri: this.props.urlImage }}
