@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 import {  } from '../actions';
 import { CardSection, Card, Spinner, Button } from './common';
 import Image from 'react-native-transformable-image';
 import { Actions } from 'react-native-router-flux';
+const { width, height } = Dimensions.get('window');
 
 class DetailView extends Component {
 
@@ -48,7 +49,7 @@ class DetailView extends Component {
               onError={ () => { this.setState({ imageLoaded: 'error' }) } }
               onLoad={ () => { this.setState({ imageLoaded: 'success' }) } }
               style={ styles.imageStyle }
-              pixels={ styles.imageStyle }
+              pixels={{ width: width * 1.5, height: height * 1.4 }}
               source={{ uri: urlImage, cache: 'force-cache' }}
               />
           );
