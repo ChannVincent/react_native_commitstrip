@@ -26,7 +26,8 @@ class DetailView extends Component {
 const styles = {
   containerStyle: {
     flex: 1,
-    backgroundColor: '#ccc'
+    backgroundColor: '#ccc',
+    overflow: 'hidden'
   },
   imageStyle: {
     flex: 1,
