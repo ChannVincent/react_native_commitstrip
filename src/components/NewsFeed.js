@@ -22,14 +22,14 @@ class NewsFeed extends Component {
         <CellItem
           title={ news.text }
           urlImage={ news.url }
-          onPress={ () => { console.log('click') } }
+          onPress={ () => { this.onRowPress({ title: news.text, urlImage: news.url }) } }
           />
       </View>
     );
   }
 
-  onRowPress() {
-    this.props.navigateToPOIView({ title: 'title sent from list' });
+  onRowPress({ title, urlImage }) {
+    this.props.navigateToPOIView({ title, urlImage });
   }
 
   renderListView() {
@@ -43,17 +43,16 @@ class NewsFeed extends Component {
         <ListView
           enableEmptySections
           dataSource={ this.dataSource }
-          renderRow={ this.renderRow }
+          renderRow={ this.renderRow.bind(this) }
           />
       )
     }
     else {
       return (
         <Card>
-        <Button onPress={ () => { this.props.feedFetchPending('https://api.morph.io/meandu229/CommitStrip/data.json?key=UUnt5d5dME%2BWtf2nnKyS&query=select%20*%20from%20%27data%27%20limit%201000') } }>
-          Reload
-        </Button>
-
+          <Button onPress={ () => { this.props.feedFetchPending('https://api.morph.io/meandu229/CommitStrip/data.json?key=UUnt5d5dME%2BWtf2nnKyS&query=select%20*%20from%20%27data%27%20limit%201000') } }>
+            Reload
+          </Button>
         </Card>
       )
     }
