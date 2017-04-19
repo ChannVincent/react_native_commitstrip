@@ -8,11 +8,11 @@ class DetailView extends Component {
   render() {
     return (
       <View style={ styles.containerStyle }>
-          <Text>{ this.props.title }</Text>
-          <Image
-            style={ styles.imageStyle }
-            source={{ uri: urlImage, cache: 'force-cache' }}
-            />
+        <Text>{ this.props.title }</Text>
+        <Image
+          style={ styles.imageStyle }
+          source={{ uri: this.props.urlImage }}
+          />
       </View>
     )
   }
@@ -21,12 +21,13 @@ class DetailView extends Component {
 const styles = {
   containerStyle: {
     flex: 1,
-    backgroundColor: '#aab'
+    backgroundColor: '#ccc'
   },
   imageStyle: {
     flex: 1,
-    width: 300,
-    resizeMode: 'contain'
+    right: 0,
+    left: 0,
+    bottom: 0
   }
 }
 
@@ -35,9 +36,10 @@ DetailView.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    const { title } = state.navigation;
+    const { title, urlImage } = state.navigation;
     return {
-      title
+      title,
+      urlImage
     }
 }
 
