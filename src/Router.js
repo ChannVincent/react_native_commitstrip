@@ -10,15 +10,16 @@ import SplashScreen from './components/SplashScreen';
 class TabIcon extends React.Component {
     render() {
         const { selected, title } = this.props;
+        var color = selected ? '#fff' : '#777';
         return (
-            <Text style={{ color: selected ? 'red' : 'black' }}>{ title }</Text>
+            <Text style={{ color, fontWeight: '500' }}>{ title }</Text>
         );
     }
 }
 
 const RouterComponent = () => {
     return (
-      <Router>
+      <Router navigationBarStyle={ styles.navBarStyle } titleStyle={ styles.navTitle }>
         <Scene key="intro" initial>
           <Scene
             key="splash"
@@ -44,7 +45,7 @@ const RouterComponent = () => {
               />
             <Scene
               key="tab3"
-              title="Profile"
+              title="Soon"
               component={ ProfileView }
               icon={ TabIcon }
               sceneStyle={ styles.sceneStyle }
@@ -61,7 +62,13 @@ const styles = {
     marginTop: (Platform.OS === 'ios') ? 64 : 54
   },
   tabBarStyle: {
-    backgroundColor: '#fff'
+    backgroundColor: '#000'
+  },
+  navBarStyle: {
+    backgroundColor: '#000'
+  },
+  navTitle: {
+    color: '#fff'
   }
 }
 
