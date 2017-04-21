@@ -2,7 +2,7 @@ import React from 'react';
 import { Scene, Router } from 'react-native-router-flux';
 import { Platform, Text } from 'react-native';
 import NewsFeed from './components/NewsFeed';
-import LoveFeed from './components/LoveFeed';
+import RandomFeed from './components/RandomFeed';
 import ProfileView from './components/ProfileView';
 import DetailView from './components/DetailView';
 import SplashScreen from './components/SplashScreen';
@@ -29,16 +29,16 @@ const RouterComponent = () => {
         <Scene key="main">
           <Scene key="tabBar" tabs tabBarStyle={ styles.tabBarStyle }>
             <Scene
-              key="tab1"
-              title="News"
-              component={ NewsFeed }
+              key="tab2"
+              title="Random"
+              component={ RandomFeed }
               icon={ TabIcon }
               sceneStyle={ styles.sceneStyle }
               />
             <Scene
-              key="tab2"
-              title="Love"
-              component={ LoveFeed }
+              key="tab1"
+              title="News"
+              component={ NewsFeed }
               icon={ TabIcon }
               sceneStyle={ styles.sceneStyle }
               />
