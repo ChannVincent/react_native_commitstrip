@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableWithoutFeedback } from 'react-native';
+import { View, Text, TouchableWithoutFeedback, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
 class SplashScreen extends Component {
@@ -11,7 +11,7 @@ class SplashScreen extends Component {
   componentWillMount() {
     setTimeout(
       this.startMain,
-      500
+      1500
     );
   }
 
@@ -19,7 +19,11 @@ class SplashScreen extends Component {
     return (
       <TouchableWithoutFeedback onPress={ this.startMain }>
         <View style={ styles.containerStyle }>
-          <Text>SplashScreen</Text>
+          <Image
+            resizeMode='cover'
+            style={ styles.imageStyle }
+            source={ require('../../assets/launch_image.jpg') }
+            />
         </View>
       </TouchableWithoutFeedback>
     )
@@ -29,7 +33,13 @@ class SplashScreen extends Component {
 const styles = {
   containerStyle: {
     flex: 1,
-    backgroundColor: '#a59'
+    backgroundColor: '#000'
+  },
+  imageStyle: {
+    flex: 1,
+    right: 0,
+    left: 0,
+    bottom: 0
   }
 }
 

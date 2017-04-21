@@ -8,10 +8,12 @@ class ProfileView extends Component {
     return (
       <View style={ styles.containerStyle }>
         <Text style={ styles.textStyle }>{ this.props.title }</Text>
-        <Image
-          style={ styles.imageStyle }
-          source={{ uri: "http://i.imgur.com/Rhpui1g.gif"}}
-          />
+        <Text style={ styles.copyrightTitleStyle }>
+          CopyRight
+        </Text>
+        <Text style={ styles.copyrightStyle }>
+          This app is not affiliated with CommitStrip in any way. All rights stay with their respective owners.
+        </Text>
       </View>
     )
   }
@@ -22,16 +24,23 @@ const styles = {
     flex:1,
     backgroundColor: '#ccc'
   },
-  imageStyle: {
-    flex: 1,
-    height: 200,
-    resizeMode: 'contain'
-  },
   textStyle: {
     fontSize: 20,
     fontWeight: '500',
     paddingTop: 50,
     paddingLeft: 30
+  },
+  copyrightTitleStyle: {
+    fontSize: 15,
+    fontWeight: '500',
+    paddingTop: 50,
+    paddingLeft: 50
+  },
+  copyrightStyle: {
+    fontSize: 15,
+    fontWeight: '400',
+    paddingTop: 10,
+    paddingLeft: 50
   }
 }
 
