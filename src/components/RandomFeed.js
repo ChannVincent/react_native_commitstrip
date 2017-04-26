@@ -49,7 +49,7 @@ class RandomFeed extends Component {
     else {
       return (
         <Card>
-          <Button onPress={ () => { this.props.feedFetchPending('https://api.morph.io/meandu229/CommitStrip/data.json?key=UUnt5d5dME%2BWtf2nnKyS&query=select%20*%20from%20%27data%27%20limit%201000') } }>
+          <Button onPress={ () => { this.props.feedFetchRandomPending('https://api.morph.io/meandu229/CommitStrip/data.json?key=UUnt5d5dME%2BWtf2nnKyS&query=select%20*%20from%20%27data%27%20limit%201000') } }>
             Reload
           </Button>
         </Card>
